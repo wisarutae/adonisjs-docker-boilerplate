@@ -64,6 +64,6 @@ Look at the [Faker API documentation](https://fakerjs.dev/api/) to learn more ab
 
 ## Development Server
 
-Start the development server on `http://localhost:8000`
+Start the development server on `http://localhost:8000` or spectific port that you setup in docker-compose.yml
 
 Check out the [deployment documentation](https://docs.adonisjs.com/guides/deployment) for more information. Or using Dockerfile
