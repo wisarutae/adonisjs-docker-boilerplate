@@ -4,7 +4,7 @@ Look at the [AdonisJS documentation](https://docs.adonisjs.com/) to learn more a
 
 ## Setup
 
-Run command for the project (using only npm because docker)
+Run command for the project (using only npm because docker's setting)
 
 ```bash
 npm i
