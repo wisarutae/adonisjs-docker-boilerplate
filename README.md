@@ -34,6 +34,14 @@ docker compose up -d --build
 
 ### Run command `node ace` in Docker's container only
 
+If you don't use Docker Desktop you can access to contianer with command:
+
+```bash
+docker exec -it [container_name] sh
+# Or
+docker exec -it [container_name] bash
+```
+
 Run command for database configuration and update `.env` file for your configuration
 
 ```bash
