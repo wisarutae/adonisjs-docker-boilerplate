@@ -8,6 +8,7 @@ Run command for the project (using only npm because docker's setting)
 
 ```bash
 npm i
+yarn install
 ```
 
 Run command for copy .env file
