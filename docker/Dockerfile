@@ -9,7 +9,7 @@ USER node
 RUN mkdir tmp
 
 FROM base AS dependencies
-COPY --chown=node:node ../package*.json ../yarn*.lock ./
+COPY --chown=node:node ../package*.json ../yarn.* ./
 # RUN npm ci
 RUN yarn install --frozen-lockfile
 COPY --chown=node:node ../ .
@@ -21,7 +21,7 @@ FROM base AS production
 ENV NODE_ENV=production
 ENV PORT=$PORT
 ENV HOST=0.0.0.0
-COPY --chown=node:node ../package*.json ../yarn*.lock ./
+COPY --chown=node:node ../package*.json ../yarn.* ./
 # RUN npm ci --production
 RUN yarn install --frozen-lockfile --production
 COPY --chown=node:node --from=build /home/node/app/build .
