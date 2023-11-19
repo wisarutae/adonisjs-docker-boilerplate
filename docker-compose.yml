@@ -12,14 +12,14 @@ services:
     container_name: adonis_api
     restart: unless-stopped
     depends_on:
-      - mariadb_server
+      - mysql_server
     working_dir: /home/node/app
     build:
       context: .
       dockerfile: docker/Dockerfile
       target: dependencies
     ports:
-      - ${PORT}:${PORT}
+      - 3333:3333
       - 9229:9229
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -27,31 +27,31 @@ services:
       - .env
     volumes:
       - ./:/home/node/app
-    command: dumb-init node ace serve --watch --node-args="--inspect=0.0.0.0"
+    # command: dumb-init node ace serve --watch --node-args="--inspect=0.0.0.0"
     networks:
       - adonis_network
 
   # Nginx Web Server
-  nginx_server:
-    image: nginx:1.17-alpine
-    container_name: nginx_server
-    restart: unless-stopped
-    depends_on:
-      - adonis_api
-    ports:
-      - 8000:80
-      - 443:443
-    volumes:
-      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./docker/nginx/sites-available:/etc/nginx/sites-available
-      - ./docker/nginx/sites-enabled:/etc/nginx/sites-enabled
-    networks:
-      - adonis_network
+  # nginx_server:
+  #   image: nginx:1.17-alpine
+  #   container_name: nginx_server
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - adonis_api
+  #   ports:
+  #     - 803:80
+  #     - 4433:443
+  #   volumes:
+  #     - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./docker/nginx/sites-available:/etc/nginx/sites-available
+  #     - ./docker/nginx/sites-enabled:/etc/nginx/sites-enabled
+  #   networks:
+  #     - adonis_network
 
   # MySQL Server
-  mariadb_server:
-    image: mariadb
-    container_name: mariadb_server
+  mysql_server:
+    image: mysql
+    container_name: mysql_server
     restart: unless-stopped
     env_file:
       - .env

@@ -62,8 +62,8 @@ export default class AuthController {
       const newUser = new User()
       newUser.email = email
       newUser.password = password
-      newUser.first_name = firstName
-      newUser.last_name = lastName
+      // newUser.first_name = firstName
+      // newUser.last_name = lastName
       await newUser.save()
 
       const token = await auth.use("jwt").login(newUser)
